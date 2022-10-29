@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from '../asserts/netflix-logo.png'
 
-const NavBar = () => {
-	return <div className="px-10 py-5">
-		<nav className="flex justify-between align-center">
+const Navbar = () => {
+	
+	const [dark, setDark] = useState<boolean>(false);
+
+	const showDark = () => {
+		if (window.scrollY > 100) setDark(true);
+		else setDark(false);
+	}
+	useEffect(() => {
+		window.addEventListener("scroll", showDark);
+		return () => window.removeEventListener('scroll', showDark)
+	}, [])
+
+	const NavItems = ({ text }: { text: string }) => {
+		return (<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 hover:text-white cursor-pointer">{text}</li>)
+	}
+
+
+	return <div className={`px-10 py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out ${dark && "bg-black"}`}>
+		<nav className="flex  justify-around">
 			<div className="flex">
-				<span className="w-28">
+				<span className="w-28 cursor-pointer">
 					<img src={logo} className="w-full" />
 				</span>
 				<ul className="flex ml-20">
-					<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 "> TV Shows</li>
-					<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 "> Movies </li>
-					<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 "> Originals </li>
-					<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 "> Kids</li>
-					<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 ">Networks</li>
+					{['Tv Shows', 'Movies', 'Originals', 'Kids', 'Networks'].map((item, index) => {
+						return <NavItems text={item} key={item + index} />
+					})}					
 				</ul>
 			</div>
 			<div>
-				<button>
-					Start free trial
+				<button className="mx-5 text-lg text-white rounded-sm py-1 duration-300 px-3 font-bold hover:bg-black  cursor-pointer">
+					START YOUR FREE TRIAL
 				</button>
-				<button>
+				<button className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 hover:text-white cursor-pointer">
 					Login
 				</button>
 			</div>
@@ -28,4 +43,4 @@ const NavBar = () => {
 	</div>
 }
 
-export default NavBar;
+export default Navbar;

@@ -1,10 +1,11 @@
 import React from 'react';
-import NavBar from './components/NavBar'
+import {Navbar, Banner} from './components'
 
 const App: React.FC = () => {
   return (
     <div>
-      <NavBar />
+      <Navbar />
+      <Banner />
     </div>
   )
 }
