@@ -3,7 +3,7 @@ import { Navbar, Banner, MovieList } from './components'
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       <Banner />
       <MovieList />
