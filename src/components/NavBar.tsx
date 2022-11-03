@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../asserts/netflix-logo.png'
+import Avatar from '../asserts/Netflix-avatar.png'
 
 const Navbar = () => {
 	
 	const [dark, setDark] = useState<boolean>(false);
+	const [clicked, setClicked] = useState<boolean>(true);
 
 	const showDark = () => {
 		if (window.scrollY > 100) setDark(true);
@@ -17,38 +19,48 @@ const Navbar = () => {
 	const NavItems = ({ text }: { text: string }) => {
 		return (<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 hover:text-white cursor-pointer">{text}</li>)
 	}
+	console.log(clicked);
 
-
-	return <div className={`px-10  py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out ${dark && "bg-black"}`}>
+	return <div className={`bg-black  px-10  py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out ${dark && "lg:bg-black"} lg:bg-transparent`}>
 		<nav className="flex  justify-between items-center">
-			<div className="flex">
-				<span className="w-[4rem] md:w-28 cursor-pointer">
+			<div className="flex items-center">
+				<span className="w-[4.5rem] md:w-28 cursor-pointer">
 					<img src={logo} className="w-full" />
 				</span>
-				<ul className="text-md absolute  bg-green-200 ml-20 text-gray-400 duration-300 hover:bg-gray lg:hidden">
-					<li>Tv Shows</li>
-					<li>Movies</li>
-					<li>Originals</li>
-					<li>Kids</li>
-					<li>Networks</li>
-
-				</ul>
-			
+				
 				<ul className="hidden ml-5 lg:flex">
 					{['Tv Shows', 'Movies', 'Originals', 'Kids', 'Networks'].map((item, index) => {
 						return <NavItems text={item} key={item + index} />
 					})}					
 				</ul>
-
 			</div>
-			<div>
+			<div className="flex items-center">
+				<div className="mr-10 lg:hidden">
+					{clicked ? (<div onClick={() => setClicked(false)}>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
+							<path fillRule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clipRule="evenodd" />
+						</svg>
+					</div>) : (<div onClick={() => setClicked(true)}>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white">
+							<path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+						</svg>
+					</div>)}
+				</div>
+
 				<button className="hidden md:inline  mx-5 text-lg text-white rounded-sm py-1 duration-300 px-3 font-bold hover:bg-black  cursor-pointer">
 					START YOUR FREE TRIAL
 				</button>
-				<button className="text-gray-400 text-sm rounded-md py-1 cursor-pointer px-3 duration-300 md:mx-5 md:text-lg hover:bg-gray-500 hover:text-white ">
-					Login
-				</button>
+				<div className="w-6  overflow-hidden">
+					<img src={Avatar} className="w-full " />
+				</div>
 			</div>
+			<ul className={`${clicked && 'right-[-100rem]'} right-0 text-md absolute bg-black ease-in-out pb-2 w-full top-16  text-gray-400 cursor-pointer duration-500 hover:bg-gray  grid place-items-center lg:hidden`}>
+				<li>Tv Shows</li>
+				<li>Movies</li>
+				<li>Originals</li>
+				<li>Kids</li>
+				<li>Networks</li>
+			</ul>
 		</nav>
 	</div>
 }

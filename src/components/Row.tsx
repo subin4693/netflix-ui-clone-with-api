@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card } from './'
-import Slider from 'react-slick'
+//import Slider from 'react-slick'
 import axios from '../helpers/axios'
-
 
 type PropType = {
 	type: string;
@@ -19,23 +18,12 @@ const Row = ({ type, size }: PropType) => {
 		fetchMovie();
 	}, [type])
 	console.log(movieImg)
-	var settings = {
-		dots: false,
-		infinite: false,
-		speed: 1000,
-		slidesToShow: 4,
-		slidesToScroll: 3
-	};
-
-	return (<div className="mt-10">
-		<Slider {...settings} >		
-			{
-				movieImg?.map((items, index) => {
-					return <Card items={items} key={index} size={size} />
-				})
-			}
-		</Slider>
-
+	return (<div className="mt-10 flex overflow-hidden">
+		{
+			movieImg?.map((items, index) => {
+				return <Card items={items} key={index} size={size} />
+			})
+		}
 	</div>
 	)
 }

@@ -15,7 +15,7 @@ const Card = ({ items, size }: any) => {
 				<div className={`p-5 rounded-lg ${size === "lg" ? "h-[30rem]" : "h-[12rem]"} bg-center bg-cover relative`} style={bgimg}>
 					{/*<img src={`https://image.tmdb.org/t/p/original/${items.poster_path}`} className="object-cover rounded-lg" />*/}
 					<div className={`text-white absolute ${size === "lg" ? "bottom-20" : "bottom-16"}`}>
-						<h3 className={`${size === "lg" ? "font-bold text-xl" : "font-normal text-md"}`}>{items.original_title || items.orginal_name}</h3>
+						<h3 className={`${size === "lg" ? "font-bold text-xl" : "font-normal text-md"}`}>{items.original_title ? items.original_title : items.original_name}</h3>
 						{size === "lg" && <div className=" h-0 group-hover:h-20 overflow-hidden transition-all duration-700">
 							<p>{textSlice(items.overview) + size}</p>
 						</div>}
