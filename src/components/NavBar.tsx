@@ -19,9 +19,7 @@ const Navbar = () => {
 	const NavItems = ({ text }: { text: string }) => {
 		return (<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 hover:text-white cursor-pointer">{text}</li>)
 	}
-	console.log(clicked);
-
-	return <div className={`bg-black  px-10  py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out ${dark && "lg:bg-black"} lg:bg-transparent`}>
+	return <div className={`bg-black  px-5  py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out  ${dark ? "lg:bg-black" : "lg:bg-transparent"} `}>
 		<nav className="flex  justify-between items-center">
 			<div className="flex items-center">
 				<span className="w-[4.5rem] md:w-28 cursor-pointer">

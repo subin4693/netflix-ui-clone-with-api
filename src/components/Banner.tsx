@@ -26,7 +26,7 @@ const Banner = () => {
 	return (
 		<div className="relative">
 			<div className="h-[38rem] bg-center bg-cover" style={bgimg} />
-			<div className="absolute text-white z-10 bottom-28 left-8 md:left-24 max-w-md"> 
+			<div className="absolute text-white z-10 bottom-28 left-5 md:left-24 max-w-md"> 
 				<h1 className="font-bold text-xl md:text-3xl">{bannerImg?.original_name}</h1>
 				<p className="font-bold text-sm md:text-xl">
 					{textSlice(bannerImg?.overview)}
