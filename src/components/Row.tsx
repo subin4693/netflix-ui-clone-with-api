@@ -34,6 +34,7 @@ const Row = ({ type, size }: PropType) => {
 				settings: {
 					slidesToShow: 1,
 					slidsToScroll: 1,
+					centerMode: true,
 				},
 			},
 			{

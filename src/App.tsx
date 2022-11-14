@@ -1,12 +1,16 @@
 import React from 'react';
-import { Navbar, Banner, MovieList } from './components'
+import Home from './pages/Home'
+import Signin from './pages/Signin'
+import Signup from './pages/Signup'
+
+
 
 const App: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
-      <Banner />
-      <MovieList />
+      {/*<Home />*/}
+      <Signin />
+      {/*<Signup />*/}
     </div>
   )
 }

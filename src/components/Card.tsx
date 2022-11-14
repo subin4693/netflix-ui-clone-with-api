@@ -10,11 +10,10 @@ const Card = ({ items, size }: any) => {
 	}
 	// console.log(items);
 	return (
-		<div className={`overflow-hidden md:mr-10 lg:w-[20rem]  `}>
+		<div className={`overflow-hidden md:mr-10  `}>
 			<div className={`border border-black rounded-lg hover:border-white ${size === "lg" ? "p-3" : "p-2"} w-min group duration-400`}>
 				<div className={`p-5 rounded-lg ${size === "lg" ? "h-[15rem] w-[10rem] md:h-[20rem] lg:h-[30rem] lg:w-[18rem] md:w-[15rem]" : "h-[6rem] w-[10rem] md:h-[9rem] md:w-[15rem]"} bg-center bg-cover relative`} style={bgimg}>
-					{/*<img src={`https://image.tmdb.org/t/p/original/${items.poster_path}`} className="object-cover rounded-lg" />*/}
-					<div className={`text-white absolute ${size === "lg" ? "bottom-8 lg:bottom-20" : "bottom-5 lg:bottom-16"}`}>
+					<div className={`text-white absolute ${size === "lg" ? "bottom-8 lg:bottom-20" : "bottom-5 lg:bottom-10"}`}>
 						<h3 className={`${size === "lg" ? "text-sm font-bold lg:text-xl" : "text-sm font-normal lg:text-md"}`}>{items.original_title ? items.original_title : items.original_name}</h3>
 						{size === "lg" && <div className="hidden md:block h-0 group-hover:h-20 overflow-hidden transition-all duration-700 ">
 							<p>{textSlice(items.overview)}</p>
