@@ -26,11 +26,11 @@ const Signin: React.FC = () => {
 							</h2>	
 							<div className="mt-8 bg-gray-700 h-12 relative rounded rounded-md overflow-hidden">
 								<span className={`absolute bottom-3  duration-200 ml-5 text-gray-500 ${inputFocus && "bottom-7 text-xs"}`}>Email</span>
-								<input type="text" name="email" value={email} className="w-full h-full pl-5 pt-3 outline-0 bg-zinc-800 text-gray-100 " onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e?.target?.value)} onFocus={() => setInputFocus(true)} onBlur={() => !email && setInputFocus(false)} />
+								<input type="text" value={email} className="w-full h-full pl-5 pt-3 outline-0 bg-zinc-800 text-gray-100 " onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e?.target?.value)} onFocus={() => setInputFocus(true)} onBlur={() => !email && setInputFocus(false)} />
 							</div>
 							<div className="bg-gray-700 h-12 relative mt-10 rounded rounded-md overflow-hidden">
 								<span className={`absolute bottom-3  ml-5 duration-200 text-gray-500 ${passwordFocus && "bottom-7 text-xs"}`}>Password</span>
-								<input type="password" name="password" value={password} className="w-full pl-5 pt-3 h-full text-gray-100 bg-zinc-800 outline-0" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e?.target?.value)} onFocus={() => setPasswordFocus(true)} onBlur={() => !password && setPasswordFocus(false)} />
+								<input type="password" value={password} className="w-full pl-5 pt-3 h-full text-gray-100 bg-zinc-800 outline-0" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e?.target?.value)} onFocus={() => setPasswordFocus(true)} onBlur={() => !password && setPasswordFocus(false)} />
 							</div>
 							<button type="submit" className="text-white bg-red-600 mt-10 w-full py-2 font-bold rounded rounded-md">
 								Sign In

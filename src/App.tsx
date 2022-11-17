@@ -1,8 +1,5 @@
 import React from 'react';
-import Home from './pages/Home'
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
-import SignupPassword from './pages/SignupPassword'
+import { Home, Signin, Signup, SignupPassword } from './pages';
 
 
 
@@ -11,8 +8,8 @@ const App: React.FC = () => {
     <div className="overflow-x-hidden">
       {/*<Home />*/}
       {/*<Signin />*/}
-      {/*<Signup />*/}
-      <SignupPassword />
+      <Signup />
+      {/*<SignupPassword />*/}
     </div>
   )
 }

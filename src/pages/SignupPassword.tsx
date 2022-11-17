@@ -1,10 +1,10 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import logo from '../asserts/netflix-logo.png'
 
-const SignupPassword = () => {
+const SignupPassword: React.FC = () => {
 
-		const [inputFocus, setInputFocus] = useState(false);
-	const [password, setPassword] = useState("");
+	const [inputFocus, setInputFocus] = useState<boolean>(false);
+	const [password, setPassword] = useState<string>("");
 	return (
 		<div>
 			<div className="flex justify-between align-center p-3  border-b-2">
@@ -15,7 +15,7 @@ const SignupPassword = () => {
 					Sign in
 				</button>
 			</div>
-			<div className="pt-10 px-8">
+			<div className="pt-10 px-8 max-w-lg  mx-auto">
 				<h1 className="font-bold text-3xl leading-10">
 					Welcome back!<br />
 					Joining Netflix is easy.
@@ -30,11 +30,11 @@ const SignupPassword = () => {
 					46subin@gmail.com
 				</h3>
 				<form>
-						<div className="bg-gray-700 h-12 relative mt-10 rounded rounded-md overflow-hidden">
-								<span className={`absolute bottom-3  ml-5 duration-200 text-gray-500 ${inputFocus && "bottom-7 text-xs"}`}>Password</span>
-								<input type="password" name="password" value={password} className="w-full pl-5 pt-3 h-full text-gray-100 bg-zinc-800 outline-0" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e?.target?.value)} onFocus={() => setInputFocus(true)} onBlur={() => !password && setInputFocus(false)} />
-							</div>
-					<button type="submit" className="bg-red-600  w-full py-5">
+					<div className="h-12 relative border border-3 border-black mt-5 overflow-hidden">
+						<span className={`absolute bottom-3  ml-5 duration-200 text-gray-500 ${inputFocus && "bottom-7 text-xs"}`}>Password</span>
+						<input type="password" value={password} className="w-full pl-5 pt-3 h-full text-black outline-0" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e?.target?.value)} onFocus={() => setInputFocus(true)} onBlur={() => !password && setInputFocus(false)} />
+					</div>
+					<button type="submit" className="bg-red-600 text-xl font-bold text-white w-full py-4 mt-5">
 						Next
 					</button>
 				</form>
