@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../asserts/netflix-logo.png'
-import Avatar from '../asserts/Netflix-avatar.png'
+import logo from '../asserts/netflix-logo.png';
+import Avatar from '../asserts/Netflix-avatar.png';
+
+import {useDispatch} from 'react-redux';
+import {loginUser} from '../features/userSlice'; 
+
+import {signOut} from 'firebase/auth'
+import { auth } from '../firebase';
+
+
+
 
 const Navbar = () => {
 	
 	const [dark, setDark] = useState<boolean>(false);
 	const [clicked, setClicked] = useState<boolean>(true);
+	const dispatch = useDispatch();
 
 	const showDark = () => {
 		if (window.scrollY > 100) setDark(true);
@@ -16,9 +26,24 @@ const Navbar = () => {
 		return () => window.removeEventListener('scroll', showDark)
 	}, [])
 
+	const handleLogOut = () => {
+		signOut(auth)
+		.then((res)=>{
+			dispatch(loginUser(false));
+			return res;
+		})
+		.catch((err)=>{
+			console.log(err)
+			return err;
+		})
+
+	}
+
 	const NavItems = ({ text }: { text: string }) => {
 		return (<li className="mx-5 text-lg text-gray-400 rounded-md py-1 duration-300 px-3 hover:bg-gray-500 hover:text-white cursor-pointer">{text}</li>)
 	}
+
+
 	return <div className={`bg-black  px-5  py-5 fixed top-0 left-0 right-0  z-50 duration-300 ease-in-out  ${dark ? "lg:bg-black" : "lg:bg-transparent"} `}>
 		<nav className="flex  justify-between items-center">
 			<div className="flex items-center">
@@ -27,11 +52,12 @@ const Navbar = () => {
 				</span>
 				
 				<ul className="hidden ml-5 lg:flex">
-					{['Tv Shows', 'Movies', 'Originals', 'Kids', 'Networks'].map((item, index) => {
+					{['Tv Shows', 'Movies', 'Originals', 'Kids'].map((item, index) => {
 						return <NavItems text={item} key={item + index} />
 					})}					
 				</ul>
 			</div>
+			
 			<div className="flex items-center">
 				<div className="mr-10 lg:hidden">
 					{clicked ? (<div onClick={() => setClicked(false)}>
@@ -44,7 +70,9 @@ const Navbar = () => {
 						</svg>
 					</div>)}
 				</div>
-
+				<button type="button" onClick={handleLogOut} className="hidden md:inline text-white max-w-md  bg-red-600 px-3 py-2 font-bold rounded rounded-md">
+					Logout
+				</button>
 				<button className="hidden md:inline  mx-5 text-lg text-white rounded-sm py-1 duration-300 px-3 font-bold hover:bg-black  cursor-pointer">
 					START YOUR FREE TRIAL
 				</button>
@@ -53,11 +81,13 @@ const Navbar = () => {
 				</div>
 			</div>
 			<ul className={`${clicked && 'right-[-100rem]'} right-0 text-md absolute bg-black ease-in-out pb-2 w-full top-16  text-gray-400 cursor-pointer duration-500 hover:bg-gray  grid place-items-center lg:hidden`}>
-				<li>Tv Shows</li>
-				<li>Movies</li>
-				<li>Originals</li>
-				<li>Kids</li>
-				<li>Networks</li>
+				<li className="mt-2">Tv Shows</li>
+				<li className="mt-2">Movies</li>
+				<li className="mt-2">Originals</li>
+				<li className="mt-2">Kids</li>
+				<button type="button" onClick={handleLogOut} className=" md:hidden text-white mt-2 max-w-md  bg-red-600 px-3 py-1 font-bold rounded rounded-md">
+					Logout
+				</button>
 			</ul>
 		</nav>
 	</div>

@@ -75,7 +75,7 @@ const Row = ({ type, size }: PropType) => {
 		]
 	};
 
-	return (<div className="px-10 py-10 lg:mt-5 lg:py-10 ">
+	return (<div className="px-10 py-10 lg:mt-5 lg:py-10">
 		<Slider {...settings} >
 
 			{
